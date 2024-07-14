@@ -23,7 +23,7 @@ app.post('/whatsapp', async (req, res) => {
   try {
     // Fetch reply from your backend API
     const response = await axios.post(process.env.YOUR_BACKEND_API_URL, {
-      message: incomingMsg
+      question: incomingMsg
     });
 
     const reply = response.data.reply || 'Sorry, I did not understand that.';
