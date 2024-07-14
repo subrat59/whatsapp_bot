@@ -17,6 +17,7 @@ app.use(express.json());
 app.post('/whatsapp', async (req, res) => {
   const incomingMsg = req.body.Body;
   const from = req.body.From;
+  console.log(incomingMsg+"   "+from)
 
   try {
     // Fetch reply from your backend API
