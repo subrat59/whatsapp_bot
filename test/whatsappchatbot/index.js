@@ -26,7 +26,7 @@ app.post('/whatsapp', async (req, res) => {
       question: incomingMsg
     });
 
-    const reply = response.data.reply || 'Sorry, I did not understand that.';
+    const reply = response.data.ans || 'Sorry, I did not understand that.';
 
     // Send reply back to the user
     await client.messages.create({
