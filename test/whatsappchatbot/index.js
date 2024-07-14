@@ -17,10 +17,11 @@ app.use(express.json());
 app.post('/whatsapp', async (req, res) => {
   const incomingMsg = req.body.Body;
   const from = req.body.From;
+
   try {
     // Fetch reply from your backend API
     const response = await axios.post(process.env.YOUR_BACKEND_API_URL, {
-      question: incomingMsg
+      message: incomingMsg
     });
 
     const reply = response.data.reply || 'Sorry, I did not understand that.';
@@ -37,6 +38,11 @@ app.post('/whatsapp', async (req, res) => {
     console.error('Error:', error);
     res.status(500).send('An error occurred');
   }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 });
 
 app.listen(port, () => {
