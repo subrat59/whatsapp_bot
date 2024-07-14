@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 3000;
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -17,8 +19,7 @@ app.use(express.json());
 app.post('/whatsapp', async (req, res) => {
   const incomingMsg = req.body.Body;
   const from = req.body.From;
-  console.log(incomingMsg+"   "+from)
-
+  console.log(incomingMsg+"    "+from)
   try {
     // Fetch reply from your backend API
     const response = await axios.post(process.env.YOUR_BACKEND_API_URL, {
@@ -39,11 +40,6 @@ app.post('/whatsapp', async (req, res) => {
     console.error('Error:', error);
     res.status(500).send('An error occurred');
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 });
 
 app.listen(port, () => {
